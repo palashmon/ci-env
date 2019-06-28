@@ -3,7 +3,19 @@ const test = require('ava')
 const { buildUrl, jobUrl, repo, sha, event, commit_message, pull_request_number, branch, ci } = require('./index')
 
 if (ci) {
-  console.log('values: ', { repo, sha, event, commit_message, pull_request_number, branch, ci })
+  
+  console.log('\n--==========================================================')
+  console.log('VALUES:-\n')
+  console.log(`
+    REPO:\t${repo}
+    SHA:\t${sha}
+    EVENT:\t${event}
+    COMMIT MSG:\t${commit_message}
+    PR #:\t${pull_request_number}
+    BRANCH:\t${branch}
+    CI:\t${ci}
+  `)
+  console.log('\n--==========================================================\n\n')
 
   test('ci is correctly set', t => {
     if (process.env.TRAVIS) t.is(ci, 'travis')
@@ -14,7 +26,7 @@ if (ci) {
     else if (process.env.GITHUB_ACTION) t.is(ci, 'github_actions')
   })
 
-  test('repo is correctly set', t => t.is(repo, 'siddharthkp/ci-env'))
+  test('repo is correctly set', t => t.is(repo, 'palashmon/ci-env'))
 
   /* Not testing these at the moment
   
