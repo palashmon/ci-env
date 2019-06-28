@@ -4,8 +4,7 @@ const { buildUrl, jobUrl, repo, sha, event, commit_message, pull_request_number,
 
 if (ci) {
   
-  console.log('\n--==========================================================')
-  console.log('VALUES:-\n')
+  console.log('\n-------------------------------------------------------------------')
   console.log(`
     REPO:\t${repo}
     SHA:\t${sha}
@@ -13,9 +12,9 @@ if (ci) {
     COMMIT MSG:\t${commit_message}
     PR #:\t${pull_request_number}
     BRANCH:\t${branch}
-    CI:\t${ci}
+    CI:\t\t${ci}
   `)
-  console.log('\n--==========================================================\n\n')
+  console.log('-------------------------------------------------------------------\n')
 
   test('ci is correctly set', t => {
     if (process.env.TRAVIS) t.is(ci, 'travis')
